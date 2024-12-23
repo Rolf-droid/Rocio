@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+      margin: 20px auto;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      animation: confetti 5s ease-in-out infinite;
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
+    }
+
+    .content {
+      position: relative;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .cake {
+      font-size: 50px;
+      margin: 20px 0;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .heart {
+      color: red;
+      font-size: 24px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="content">
+      <div class="cake">🎂</div>
+      <h1>¡Feliz Cumpleaños Rocío!</h1>
+      <p>Que este día esté lleno de alegría y sonrisas.</p>
+      <p>Que todos tus deseos se hagan realidad.</p>
+      <p>Con cariño <span class="heart">♥</span></p>
+    </div>
+  </div>
+
+  <script>
+    function createConfetti() {
+      const colors = ['#ff69b4', '#ff1493', '#fff', '#ffd700'];
+      for(let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 300 + 'px';
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        document.querySelector('.card').appendChild(confetti);
+      }
+    }
+    createConfetti();
+  </script>
+</body>
+</html>
